@@ -1,0 +1,222 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #007BFF;  /* Keep navbar blue */
+    padding: 1rem;
+    flex-wrap: nowrap;  /* Keep navbar items in a single row */
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;  /* Space between navbar items */
+}
+
+.navbar ul li {
+    margin: 0;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    background: #575757;
+    color: #fff;
+}
+
+.homeButton {
+    background-color: #007BFF;
+    height: 3em;
+    width: auto;
+    border-radius: 20px;
+    border-color: #86989B;
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+/* General Styles for Content */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.result-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #f1f8ff;  /* Light blue background */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.next-period {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.details h2 {
+    font-size: 1.8em;
+    color: #ff0000;  /* Red color for unsafe days */
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+/* Styling for Unsafe Days */
+.unsafe-days, .safe-sex-tools {
+    background-color: #f1f8ff;  /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.unsafe-days ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.unsafe-days li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.unsafe-days strong {
+    color: #007bff;
+}
+
+#pregnancy, .menstruation, .safe-sex-tools {
+    font-size: 1.5em;
+    background-color: #f1f8ff;  /* Light blue background */
+}
+
+.safe-sex-tools {
+    font-family: Arial;
+}
+
+.safe {
+    color: #007bff;
+    font-size: 1.5em;
+}
+
+/* Mobile Adjustments (under 600px) */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .navbar ul li {
+        width: 100%;
+    }
+
+    .navbar ul li a {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .homeButton {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+
+    .result-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .details h2 {
+        font-size: 1.5em;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .navbar ul {
+        gap: 5px;
+    }
+
+    .navbar ul li a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .homeButton {
+        font-size: 1rem;
+        padding: 0.6rem;
+    }
+}
+pre {
+    white-space: pre;
+    overflow-x: auto;
+    display: block;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+pre::-webkit-scrollbar {
+    height: 6px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/*@media (max-width: 600px) {*/
+/*    .unsafe-days,*/
+/*    .menstruation,*/
+/*    .safe-sex-tools {*/
+/*        padding: 15px;*/
+/*    }*/
+
+/*    pre {*/
+/*        font-size: 1rem; !* Slightly smaller text on mobile *!*/
+/*    }*/
+/*}*/

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Tracker Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleTwo.css') }}">
+
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">pregnant women</a></li>
+            <li><a href="#">Blood group</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>
+        <ul>
+           <button class="homeButton"><li><a href="{{url_for('index')}}">Home</a></li></button>
+        </ul>
+    </nav>
+
+</head>
+<body>
+ <div class="result-container">
+        <header class="header">
+            <h1>Welcome, {{ name }}!</h1>
+            <p class="next-period">Your next period is expected on: <strong>{{ next_period }}</strong></p>
+        </header>
+
+        <div class="details">
+            <div class="unsafe-days">
+                <h2>Unsafe Days</h2>
+                <ul>
+                    <li><strong>Start:</strong> {{ safe_days['start unsafe day'] }}</li>
+                    <li><strong>Ovulation:</strong> {{ safe_days['ovulation day'] }}</li>
+                    <li><strong>End:</strong> {{ safe_days['end unsafe day'] }}</li>
+                </ul>
+            </div>
+             <strong class="safe">Pregnancy Symptoms:</strong>
+            <div id="pregnancy"class="unsafe-days">
+
+                    <pre>
+            1.Missed period for a A day or Two
+            2.Morning Sickness
+            3.Fatigue
+            4.Tender breast
+            5.Frequent urination
+                    </pre>
+            </div>
+            <strong class="safe">Menstruation symptoms:</strong>
+            <div class="menstruation">
+                <pre>
+            1. cramps
+            2. Mood swings
+            3. Headaches
+            4. Lower back pain
+            5. Iwa wayre
+                    </pre>
+
+            </div>
+
+             <strong class="safe">Safe Sex Tools:</strong>
+            <div class="safe-sex-tools">
+                <pre>
+        1. Condoms (male & female) - prevent pregnancy & STIs
+        2. Birth control pills - daily pills to prevent ovulation
+        3. Emergency contraception - "morning-after" pills
+        4. IUD - long-term birth control (Family planning) inserted by a doctor
+        5. Fertility awareness - avoid sex during fertile days
+        6. Communication - talk openly with your partner
+        7. Regular checkups - visit a health professional
+        8. Avoid sex: (The bible say's flee)</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
