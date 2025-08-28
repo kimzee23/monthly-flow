@@ -4,7 +4,7 @@ from menstruration_app import UserAccount
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         try:
@@ -23,7 +23,9 @@ def index():
         except Exception as e:
             return f"Error: {e}"
     return render_template("index_one.html")
-
+@app.route('/pregnancy-support')
+def pregnancy_support():
+    return render_template("pregnancy.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

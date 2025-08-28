@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Menstruation Tracker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleSync - Menstruation Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5460/5460830.png">
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
@@ -15,47 +16,124 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-calendar-check"></i>
+            <span>CycleSync</span>
+        </div>
         <ul>
-            <li><a href="#">Pregnant Women</a></li>
-            <li><a href="#">Blood Group</a></li>
-            <li><a href="#">Contact Us</a></li>
+           <li><a href="{{ url_for('pregnancy_support') }}" class="active"><i class="fas fa-heart"></i> Pregnancy Support</a></li>
+            <li><a href="#"><i class="fas fa-tint"></i> Blood Group Info</a></li>
+            <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
         </ul>
-        <ul>
-
-                <li><a href="{{ url_for('index') }}">Home</a></li>6
-
-        </ul>
+        <button class="home-btn" onclick="window.location.href='{{ url_for('index') }}'">
+            <i class="fas fa-home"></i> Home
+        </button>
     </nav>
 
+    <div class="container">
+        <div class="hero">
+            <h1>CycleSync Menstruation Tracker</h1>
+            <p>Track your cycle, understand your body, and plan ahead with confidence</p>
 
-    <div class="result-containerOne">
-        <marquee>Welcome to X menstrual tracker</marquee>
-        <h1 id="headerOne">Menstruation Tracker</h1>
+            <!-- SVG Illustration -->
+            <svg class="illustration" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="250" cy="150" r="120" fill="#f9f5ff" stroke="#8a2be2" stroke-width="3" />
+                <path d="M250 80 C300 100 300 200 250 220 C200 200 200 100 250 80" fill="#b885f3" opacity="0.6" />
+                <circle cx="220" cy="130" r="15" fill="#ff69b4" />
+                <circle cx="280" cy="130" r="15" fill="#ff69b4" />
+                <path d="M230 180 Q250 200 270 180" stroke="#333" stroke-width="3" fill="none" />
+                <path d="M180 100 C200 70 300 70 320 100" stroke="#8a2be2" stroke-width="3" fill="none" />
+            </svg>
 
+            <div class="tracker-form">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
 
-        <form method="post">
-            <input type="text" name="name" placeholder="Name" required><br>
-            <input type="number" name="age" placeholder="Age (11-55)" required><br>
-            <input type="number" name="cycle_length" placeholder="Cycle Length (20-31)" required><br>
-            <input type="number" name="period_length" placeholder="Period Length (3-5)" required><br>
-            <input type="date" name="last_period_date" required><br>
-            <button type="submit">Track</button>
-        </form><br><br>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" placeholder="Between 11-55" min="11" max="55" required>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="cycle_length">Cycle Length</label>
+                        <input type="number" id="cycle_length" name="cycle_length" placeholder="Days (20-31)" min="20" max="31" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="period_length">Period Length</label>
+                        <input type="number" id="period_length" name="period_length" placeholder="Days (3-5)" min="3" max="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_period_date">Last Period Date</label>
+                        <input type="date" id="last_period_date" name="last_period_date" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Track My Cycle <i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Cycle Predictions</h3>
+                <p>Accurate predictions for your next period and ovulation days based on your unique cycle patterns.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Symptom Tracking</h3>
+                <p>Monitor physical and emotional symptoms to better understand your body's patterns throughout your cycle.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Smart Reminders</h3>
+                <p>Get notified before your period starts and receive personalized insights about your fertility window.</p>
+            </div>
+        </div>
     </div>
-    <div style="width: 100em":hight="100em">
-    <marquee scrollamount="20" direction="right"><img class="image" src="{{ url_for('static', filename='two.png') }}" alt="Menstruation Tracker"></marquee><br><br>
-    <marquee scrollamount="20" direction="left"><img class="imageTwo" src="{{ url_for('static', filename='pr.png') }}" alt="Menstruation Tracker"></marquee>
-    </div>
 
-<!--<marquee-->
-<!--  direction="down"-->
-<!--  width="250"-->
-<!--  height="200"-->
-<!--  behavior="alternate"-->
-<!--  style="border:lightcyan">-->
-<!--  -->
-<!--</marquee>-->
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 CycleSync Menstruation Tracker | Empowering women through cycle awareness</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Set today's date as the default for the date input
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const formattedToday = today.toISOString().substr(0, 10);
+            document.getElementById('last_period_date').value = formattedToday;
+
+            // Add validation for inputs
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if(this.value && this.checkValidity()) {
+                        this.style.borderColor = '#4CAF50';
+                    } else if(this.value) {
+                        this.style.borderColor = '#F44336';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

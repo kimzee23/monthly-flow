@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregnancy Support | CycleSync</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylePregnancy.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-calendar-check"></i>
+      <span>CycleSync</span>
+    </div>
+    <ul>
+      <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="{{ url_for('pregnancy_support') }}" class="active"><i class="fas fa-heart"></i> Pregnancy Support</a></li>
+      <li><a href="#"><i class="fas fa-tint"></i> Blood Group Info</a></li>
+      <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1><i class="fas fa-heartbeat"></i> Pregnancy Support</h1>
+      <p>Guidance, care, and tips to support women during pregnancy.</p>
+    </div>
+    <div class="hero-image">
+      <img src="{{ url_for('static', filename='pre.png') }}" alt="Pregnancy illustration">
+    </div>
+  </section>
+
+  <!-- Support Information -->
+  <section class="support-info">
+    <h2><i class="fas fa-lightbulb"></i> Tips for a Healthy Pregnancy</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <i class="fas fa-apple-alt"></i>
+        <h3>Nutrition</h3>
+        <p>Eat a balanced diet rich in fruits, vegetables, proteins, and whole grains to support you and your baby’s growth.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-walking"></i>
+        <h3>Exercise</h3>
+        <p>Engage in light physical activities such as walking or prenatal yoga to maintain energy and reduce stress.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-bed"></i>
+        <h3>Rest</h3>
+        <p>Get enough sleep and rest to help your body cope with pregnancy changes.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-user-md"></i>
+        <h3>Medical Checkups</h3>
+        <p>Attend regular prenatal checkups for your health and your baby’s development.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency & Support Hotlines -->
+  <section class="hotlines">
+    <h2><i class="fas fa-phone-volume"></i> Support & Emergency Hotlines</h2>
+    <ul>
+      <li><i class="fas fa-ambulance"></i> <strong>Emergency:</strong> Call 112 (or your local emergency number)</li>
+      <li><i class="fas fa-clinic-medical"></i> <strong>Nearest Clinic:</strong> Visit your nearest maternity clinic</li>
+      <li><i class="fas fa-phone"></i> <strong>Support Line:</strong> +234 800 123 4567</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>© 2023 CycleSync | Pregnancy Support</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

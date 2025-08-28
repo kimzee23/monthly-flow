@@ -6,71 +6,161 @@
     <title>Period Tracker Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styleTwo.css') }}">
 
-
+<body>
+    <!-- Navbar -->
     <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-calendar-check"></i>
+            <span>CycleSync</span>
+        </div>
         <ul>
-            <li><a href="#">pregnant women</a></li>
-            <li><a href="#">Blood group</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="#"><i class="fas fa-heart"></i> Pregnancy Support</a></li>
+            <li><a href="#"><i class="fas fa-tint"></i> Blood Group Info</a></li>
+            <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
         </ul>
-        <ul>
-           <button class="homeButton"><li><a href="{{url_for('index')}}">Home</a></li></button>
-        </ul>
+<button class="home-btn" onclick="window.location.href='{{ url_for("index") }}'">
+
+            <i class="fas fa-home"></i> Home
+        </button>
     </nav>
 
-</head>
-<body>
- <div class="result-container">
-        <header class="header">
-            <h1>Welcome, {{ name }}!</h1>
-            <p class="next-period">Your next period is expected on: <strong>{{ next_period }}</strong></p>
-        </header>
+    <div class="container">
+        <div class="result-container">
+            <div class="result-header">
+                <h1><i class="fas fa-user-circle"></i> Welcome, {{ name }}!</h1>
+                <p>Here's your personalized menstrual cycle analysis</p>
+            </div>
 
-        <div class="details">
-            <div class="unsafe-days">
-                <h2>Unsafe Days</h2>
-                <ul>
-                    <li><strong>Start:</strong> {{ safe_days['start unsafe day'] }}</li>
-                    <li><strong>Ovulation:</strong> {{ safe_days['ovulation day'] }}</li>
-                    <li><strong>End:</strong> {{ safe_days['end unsafe day'] }}</li>
+            <div class="next-period">
+                <i class="fas fa-calendar-day"></i> Your next period is expected on: <strong>{{ next_period }}</strong>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Fertile Window</h2>
+                    <ul class="info-list">
+                        <li><i class="fas fa-play-circle"></i> <strong>Start:</strong> <span class="highlight">{{ safe_days['start unsafe day'] }}</span></li>
+                        <li><i class="fas fa-ovulation"></i> <strong>Ovulation:</strong> <span class="highlight">{{ safe_days['ovulation day'] }}</span></li>
+                        <li><i class="fas fa-stop-circle"></i> <strong>End:</strong> <span class="highlight">{{ safe_days['end unsafe day'] }}</span></li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h2><i class="fas fa-info-circle"></i> Cycle Information</h2>
+                    <ul class="info-list">
+                        <li><i class="fas fa-user"></i> <strong>Name:</strong> {{ name }}</li>
+                        <li><i class="fas fa-birthday-cake"></i> <strong>Age:</strong> {{ age }}</li>
+                        <li><i class="fas fa-clock"></i> <strong>Cycle Length:</strong> {{ cycle_length }} days</li>
+                        <li><i class="fas fa-calendar-week"></i> <strong>Period Length:</strong> {{ period_length }} days</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="symptoms-grid">
+                <div class="symptom-card">
+                    <h3><i class="fas fa-baby"></i> Pregnancy Symptoms</h3>
+                    <ul class="symptom-list">
+                        <li><i class="fas fa-1"></i> Missed period for a day or two</li>
+                        <li><i class="fas fa-2"></i> Morning sickness</li>
+                        <li><i class="fas fa-3"></i> Fatigue</li>
+                        <li><i class="fas fa-4"></i> Tender breasts</li>
+                        <li><i class="fas fa-5"></i> Frequent urination</li>
+                    </ul>
+                </div>
+
+                <div class="symptom-card">
+                    <h3><i class="fas fa-calendar-times"></i> Menstruation Symptoms</h3>
+                    <ul class="symptom-list">
+                        <li><i class="fas fa-1"></i> Cramps</li>
+                        <li><i class="fas fa-2"></i> Mood swings</li>
+                        <li><i class="fas fa-3"></i> Headaches</li>
+                        <li><i class="fas fa-4"></i> Lower back pain</li>
+                        <li><i class="fas fa-5"></i> Food cravings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tools-section">
+                <h3><i class="fas fa-toolbox"></i> Safe Sex Tools & Methods</h3>
+                <ul class="tools-list">
+                    <li><i class="fas fa-1"></i> <strong>Condoms</strong> (male & female) - prevent pregnancy & STIs</li>
+                    <li><i class="fas fa-2"></i> <strong>Birth control pills</strong> - daily pills to prevent ovulation</li>
+                    <li><i class="fas fa-3"></i> <strong>Emergency contraception</strong> - "morning-after" pills</li>
+                    <li><i class="fas fa-4"></i> <strong>IUD</strong> - long-term birth control inserted by a doctor</li>
+                    <li><i class="fas fa-5"></i> <strong>Fertility awareness</strong> - avoid sex during fertile days</li>
+                    <li><i class="fas fa-6"></i> <strong>Communication</strong> - talk openly with your partner</li>
+                    <li><i class="fas fa-7"></i> <strong>Regular checkups</strong> - visit a health professional</li>
+                    <li><i class="fas fa-8"></i> <strong>Abstinence</strong> - avoid sexual activity</li>
                 </ul>
             </div>
-             <strong class="safe">Pregnancy Symptoms:</strong>
-            <div id="pregnancy"class="unsafe-days">
 
-                    <pre>
-            1.Missed period for a A day or Two
-            2.Morning Sickness
-            3.Fatigue
-            4.Tender breast
-            5.Frequent urination
-                    </pre>
-            </div>
-            <strong class="safe">Menstruation symptoms:</strong>
-            <div class="menstruation">
-                <pre>
-            1. cramps
-            2. Mood swings
-            3. Headaches
-            4. Lower back pain
-            5. Iwa wayre
-                    </pre>
-
-            </div>
-
-             <strong class="safe">Safe Sex Tools:</strong>
-            <div class="safe-sex-tools">
-                <pre>
-        1. Condoms (male & female) - prevent pregnancy & STIs
-        2. Birth control pills - daily pills to prevent ovulation
-        3. Emergency contraception - "morning-after" pills
-        4. IUD - long-term birth control (Family planning) inserted by a doctor
-        5. Fertility awareness - avoid sex during fertile days
-        6. Communication - talk openly with your partner
-        7. Regular checkups - visit a health professional
-        8. Avoid sex: (The bible say's flee)</pre>
+            <div class="info-card">
+                <h2><i class="fas fa-lightbulb"></i> Recommendations</h2>
+                <ul class="info-list">
+                    <li><i class="fas fa-calendar-check"></i> Track your cycle daily for the most accurate predictions</li>
+                    <li><i class="fas fa-clipboard-list"></i> Note any symptoms you experience throughout your cycle</li>
+                    <li><i class="fas fa-user-md"></i> Consult with a healthcare provider for personalized advice</li>
+                    <li><i class="fas fa-heart"></i> Practice self-care during your menstrual period</li>
+                </ul>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 CycleSync Menstruation Tracker | Empowering women through cycle awareness</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to cards when they come into view
+            const cards = document.querySelectorAll('.info-card, .symptom-card');
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            // Animate cards sequentially
+            setTimeout(() => {
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100 * index);
+                });
+            }, 300);
+
+            // Add print functionality
+            const printBtn = document.createElement('button');
+            printBtn.innerHTML = '<i class="fas fa-print"></i> Print Results';
+            printBtn.style = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 50px;
+                cursor: pointer;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            `;
+            printBtn.addEventListener('click', () => window.print());
+            document.body.appendChild(printBtn);
+        });
+    </script>
 </body>
 </html>

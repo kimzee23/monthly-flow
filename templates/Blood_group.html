@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Group Information</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/blood_group.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-tint"></i> Blood Group Information</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        Blood groups are important for safe transfusions, pregnancy, and medical treatments.
+        Learn about compatibility, donation, and why your blood type matters.
+      </p>
+    </section>
+
+    <section class="groups">
+      <div class="card">
+        <h2>A+</h2>
+        <p>Can donate to: A+, AB+</p>
+        <p>Can receive from: A+, A-, O+, O-</p>
+      </div>
+
+      <div class="card">
+        <h2>B+</h2>
+        <p>Can donate to: B+, AB+</p>
+        <p>Can receive from: B+, B-, O+, O-</p>
+      </div>
+
+      <div class="card">
+        <h2>O+</h2>
+        <p>Can donate to: All positive groups</p>
+        <p>Can receive from: O+, O-</p>
+      </div>
+
+      <div class="card">
+        <h2>AB+</h2>
+        <p>Universal recipient (can receive from all)</p>
+        <p>Can donate to: AB+ only</p>
+      </div>
+
+      <div class="card">
+        <h2>O-</h2>
+        <p>Universal donor (can donate to all)</p>
+        <p>Can receive from: O- only</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h3>💡 Quick Note</h3>
+      <p>Knowing your blood group can save lives in emergencies.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Health Support App</p>
+  </footer>
+</body>
+</html>
