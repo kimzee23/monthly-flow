@@ -1,65 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blood Group Information</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/blood_group.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Group Compatibility</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blood_group.css') }}">
 </head>
 <body>
-  <header>
-    <h1><i class="fas fa-tint"></i> Blood Group Information</h1>
-  </header>
+    <div class="container">
+      <nav> <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li></nav>
+        <header>
+            <h1><i class="fas fa-tint"></i> Blood Group Compatibility</h1>
+            <p>Why matching blood types is crucial for safe transfusions</p>
+        </header>
 
-  <main>
-    <section class="intro">
-      <p>
-        Blood groups are important for safe transfusions, pregnancy, and medical treatments.
-        Learn about compatibility, donation, and why your blood type matters.
-      </p>
-    </section>
+        <div class="card-container">
+            <div class="card">
+                <h3><i class="fas fa-heartbeat"></i> The Importance of Matching</h3>
+                <p>Receiving compatible blood is critical for patient safety. Incompatible blood can cause severe immune reactions that may be life-threatening.</p>
+                <p>Blood types are determined by the presence or absence of antigens (proteins) on the surface of red blood cells.</p>
+                <button class="btn" onclick="openModal('matchingModal')">Learn More</button>
+            </div>
 
-    <section class="groups">
-      <div class="card">
-        <h2>A+</h2>
-        <p>Can donate to: A+, AB+</p>
-        <p>Can receive from: A+, A-, O+, O-</p>
-      </div>
+            <div class="card">
+                <h3><i class="fas fa-exclamation-triangle"></i> Risks of Mismatch</h3>
+                <p>When incompatible blood is transfused, the recipient's immune system attacks the donor red blood cells, causing them to burst.</p>
+                <p>This can lead to fever, chills, kidney failure, shock, and even death.</p>
+                <button class="btn" onclick="openModal('risksModal')">Understand the Risks</button>
+            </div>
 
-      <div class="card">
-        <h2>B+</h2>
-        <p>Can donate to: B+, AB+</p>
-        <p>Can receive from: B+, B-, O+, O-</p>
-      </div>
+            <div class="card">
+                <h3><i class="fas fa-users"></i> Universal Donors & Recipients</h3>
+                <p>Type O-negative blood is called the universal donor type because it can be transfused to persons of any blood type.</p>
+                <p>Type AB-positive blood is called the universal recipient type because a person with this type can receive blood of any type.</p>
+                <button class="btn" onclick="openModal('universalModal')">See Details</button>
+            </div>
+        </div>
 
-      <div class="card">
-        <h2>O+</h2>
-        <p>Can donate to: All positive groups</p>
-        <p>Can receive from: O+, O-</p>
-      </div>
+        <div class="info-box">
+            <h3><i class="fas fa-lightbulb"></i> Did You Know?</h3>
+            <p>Blood type compatibility is not just important for transfusions, but also for organ transplants and pregnancy. When a mother and fetus have incompatible blood types, it can lead to hemolytic disease of the newborn.</p>
+        </div>
 
-      <div class="card">
-        <h2>AB+</h2>
-        <p>Universal recipient (can receive from all)</p>
-        <p>Can donate to: AB+ only</p>
-      </div>
+        <div class="interactive-box">
+            <h2>Blood Type Compatibility Checker</h2>
+            <p>Select blood types to check compatibility between donor and recipient</p>
 
-      <div class="card">
-        <h2>O-</h2>
-        <p>Universal donor (can donate to all)</p>
-        <p>Can receive from: O- only</p>
-      </div>
-    </section>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 25px 0;">
+                <div>
+                    <label for="donorType">Donor Blood Type:</label>
+                    <select id="donorType" style="padding: 10px; border-radius: 5px; margin-top: 8px;">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
 
-    <section class="note">
-      <h3>💡 Quick Note</h3>
-      <p>Knowing your blood group can save lives in emergencies.</p>
-    </section>
-  </main>
+                <div>
+                    <label for="recipientType">Recipient Blood Type:</label>
+                    <select id="recipientType" style="padding: 10px; border-radius: 5px; margin-top: 8px;">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+            </div>
 
-  <footer>
-    <p>&copy; 2025 Health Support App</p>
-  </footer>
+            <button class="btn" onclick="checkCompatibility()">Check Compatibility</button>
+
+            <div id="compatibilityResult" style="margin-top: 25px; padding: 15px; border-radius: 8px; display: none;"></div>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-hand-holding-heart"></i> Blood Donation Matters</h3>
+            <p>Every 2 seconds, someone in the U.S. needs blood. Approximately 36,000 units of red blood cells are needed every day in the U.S.</p>
+            <p>One donation can save up to three lives. Donate blood today to help ensure a stable blood supply for patients in need.</p>
+        </div>
+    </div>
+
+    <!-- Modals for detailed explanations -->
+    <div id="matchingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('matchingModal')">&times;</span>
+            <h2>Why Blood Type Matching is Important</h2>
+
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab(event, 'matchingScientific')">Scientific Explanation</div>
+                <div class="tab" onclick="switchTab(event, 'matchingFriendly')">Simple Explanation</div>
+            </div>
+
+            <div id="matchingScientific" class="tab-content active science-content">
+                <p><strong>Scientific Explanation:</strong></p>
+                <p>Blood types are classified based on the presence or absence of antigens on the surface of red blood cells. The most important blood group systems are ABO and Rh.</p>
+                <p>The ABO system has four main types: A, B, AB, and O. Each type has specific antigens:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Type A: Has A antigens</li>
+                    <li>Type B: Has B antigens</li>
+                    <li>Type AB: Has both A and B antigens</li>
+                    <li>Type O: Has neither A nor B antigens</li>
+                </ul>
+                <p>People naturally develop antibodies against the antigens they lack. For example:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Type A blood has anti-B antibodies</li>
+                    <li>Type B blood has anti-A antibodies</li>
+                    <li>Type O blood has both anti-A and anti-B antibodies</li>
+                    <li>Type AB blood has neither antibody</li>
+                </ul>
+                <p>The Rh factor is another important antigen. If present, the blood type is Rh-positive (e.g., A+). If absent, it's Rh-negative (e.g., A-).</p>
+                <p>During transfusion, if a recipient receives blood containing antigens that their antibodies target, a dangerous immune reaction occurs where the antibodies attack and destroy the donor red blood cells.</p>
+            </div>
+
+            <div id="matchingFriendly" class="tab-content user-friendly-content">
+                <p><strong>Simple Explanation:</strong></p>
+                <p>Think of blood types like different lock-and-key systems. Your body recognizes your own blood type as the right "key" but sees different blood types as the wrong "key" that doesn't fit.</p>
+                <p>If you get the wrong blood type during a transfusion, your body's defense system (immune system) will attack the foreign blood cells, thinking they're invaders. This can make you very sick.</p>
+                <p>It's like trying to fit a square peg in a round hole - it just doesn't work and can cause damage.</p>
+                <p>That's why doctors always check blood types very carefully before giving a transfusion - to make sure the donor's blood matches the recipient's blood type.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="risksModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('risksModal')">&times;</span>
+            <h2>Risks of Blood Type Mismatch</h2>
+
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab(event, 'risksScientific')">Scientific Explanation</div>
+                <div class="tab" onclick="switchTab(event, 'risksFriendly')">Simple Explanation</div>
+            </div>
+
+            <div id="risksScientific" class="tab-content active science-content">
+                <p><strong>Scientific Explanation:</strong></p>
+                <p>Transfusion of incompatible blood can trigger an acute hemolytic transfusion reaction (AHTR). This occurs when the recipient's pre-formed antibodies bind to antigens on donor red blood cells, activating the complement system and causing intravascular hemolysis.</p>
+                <p>The process involves:</p>
+                <ol style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Antibody binding to donor red blood cell antigens</li>
+                    <li>Complement activation leading to membrane attack complex formation</li>
+                    <li>Osmotic lysis of red blood cells</li>
+                    <li>Release of hemoglobin and other cellular contents into plasma</li>
+                </ol>
+                <p>This can cause:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Hemoglobinuria (hemoglobin in urine)</li>
+                    <li>Disseminated intravascular coagulation (DIC)</li>
+                    <li>Renal failure due to hemoglobin nephrotoxicity</li>
+                    <li>Hypotension and shock</li>
+                    <li>Potential mortality (estimated 1:250,000 to 1:1,000,000 transfusions)</li>
+                </ul>
+            </div>
+
+            <div id="risksFriendly" class="tab-content user-friendly-content">
+                <p><strong>Simple Explanation:</strong></p>
+                <p>If someone gets the wrong blood type, it can cause serious problems. The body's defense system sees the new blood as a threat and attacks it.</p>
+                <p>This is like when your body fights off germs when you're sick, but in this case, it's attacking the blood that's supposed to help you.</p>
+                <p>The attacked blood cells break apart and can:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Clog up your kidneys (which can lead to kidney failure)</li>
+                    <li>Cause serious bleeding problems</li>
+                    <li>Make your blood pressure drop dangerously low</li>
+                    <li>Cause fever, chills, and pain</li>
+                </ul>
+                <p>In the worst cases, it can even be life-threatening. That's why hospitals are extremely careful about matching blood types perfectly.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="universalModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('universalModal')">&times;</span>
+            <h2>Universal Donors and Recipients</h2>
+
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab(event, 'universalScientific')">Scientific Explanation</div>
+                <div class="tab" onclick="switchTab(event, 'universalFriendly')">Simple Explanation</div>
+            </div>
+
+            <div id="universalScientific" class="tab-content active science-content">
+                <p><strong>Scientific Explanation:</strong></p>
+                <p>Type O-negative blood is considered the universal donor because:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>It lacks A, B, and Rh antigens on red blood cells</li>
+                    <li>Therefore, it is unlikely to trigger an immune response in recipients regardless of their blood type</li>
+                </ul>
+                <p>Type AB-positive blood is considered the universal recipient because:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>It has both A and B antigens on red blood cells</li>
+                    <li>It lacks anti-A and anti-B antibodies in plasma</li>
+                    <li>Therefore, it will not attack red blood cells from donors of any ABO type</li>
+                </ul>
+                <p>However, these designations are primarily for red blood cell transfusions. For plasma transfusions, the compatibility is reversed:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>AB plasma is universal donor plasma (contains no antibodies)</li>
+                    <li>Type O plasma is universal recipient plasma (contains both anti-A and anti-B antibodies)</li>
+                </ul>
+            </div>
+
+            <div id="universalFriendly" class="tab-content user-friendly-content">
+                <p><strong>Simple Explanation:</strong></p>
+                <p><strong>Universal Donors (O-negative):</strong></p>
+                <p>People with O-negative blood are called "universal donors" because they can donate blood to anyone, regardless of the recipient's blood type.</p>
+                <p>This is because O-negative blood doesn't have any special markers that might trigger someone else's immune system. It's like a "blank" blood type that everyone's body will accept in an emergency.</p>
+
+                <p><strong>Universal Recipients (AB-positive):</strong></p>
+                <p>People with AB-positive blood are called "universal recipients" because they can receive blood from anyone, regardless of the donor's blood type.</p>
+                <p>This is because their bodies are used to both A and B markers, so they won't react negatively to any blood type. It's like they can understand all "blood languages."</p>
+
+                <p>This is especially important in emergency situations when there might not be time to check blood types thoroughly.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Blood Compatibility Education | Medical information provided for educational purposes only</p>
+        <p>Always consult healthcare professionals for medical advice</p>
+    </footer>
+
+    <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Tab switching function
+        function switchTab(event, tabId) {
+            // Get tab container
+            const tabContainer = event.target.parentElement;
+
+            // Remove active class from all tabs in this container
+            const tabs = tabContainer.getElementsByClassName("tab");
+            for (let tab of tabs) {
+                tab.classList.remove("active");
+            }
+
+            // Add active class to clicked tab
+            event.target.classList.add("active");
+
+            // Hide all tab content in this modal
+            const modalContent = tabContainer.parentElement;
+            const tabContents = modalContent.getElementsByClassName("tab-content");
+            for (let content of tabContents) {
+                content.classList.remove("active");
+            }
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.add("active");
+        }
+
+        // Close modals when clicking outside content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        // Compatibility checker function
+        function checkCompatibility() {
+            const donorType = document.getElementById("donorType").value;
+            const recipientType = document.getElementById("recipientType").value;
+            const resultElement = document.getElementById("compatibilityResult");
+
+            // Simple compatibility logic (in reality, it's more complex)
+            let isCompatible = false;
+            let explanation = "";
+
+            // O- can donate to anyone
+            if (donorType === "O-") {
+                isCompatible = true;
+            }
+            // AB+ can receive from anyone
+            else if (recipientType === "AB+") {
+                isCompatible = true;
+            }
+            // Same type is always compatible
+            else if (donorType === recipientType) {
+                isCompatible = true;
+            }
+            // O+ can donate to any positive type
+            else if (donorType === "O+" && recipientType.endsWith("+")) {
+                isCompatible = true;
+            }
+            // Negative can donate to same type regardless of Rh
+            else if (donorType.slice(0, -1) === recipientType.slice(0, -1)) {
+                isCompatible = true;
+            }
+
+            if (isCompatible) {
+                resultElement.style.backgroundColor = "#d4edda";
+                resultElement.style.color = "#155724";
+                resultElement.style.border = "2px solid #c3e6cb";
+                resultElement.innerHTML = `<h3>Compatible! <i class="fas fa-check-circle"></i></h3>
+                <p>${donorType} blood can be safely donated to someone with ${recipientType} blood.</p>`;
+            } else {
+                resultElement.style.backgroundColor = "#f8d7da";
+                resultElement.style.color = "#721c24";
+                resultElement.style.border = "2px solid #f5c6cb";
+                resultElement.innerHTML = `<h3>Not Compatible! <i class="fas fa-exclamation-circle"></i></h3>
+                <p>${donorType} blood should NOT be donated to someone with ${recipientType} blood as it may cause a dangerous reaction.</p>`;
+            }
+
+            resultElement.style.display = "block";
+        }
+    </script>
 </body>
 </html>

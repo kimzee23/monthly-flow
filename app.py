@@ -27,5 +27,10 @@ def index():
 def pregnancy_support():
     return render_template("pregnancy.html")
 
+@app.route('/blood-group')
+def blood_group():
+    return render_template("blood_group.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
