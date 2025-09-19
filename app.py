@@ -23,7 +23,7 @@ def index():
                                    cycle_length=user.cycle_length,
                                    period_length=user.period_length,
                                    next_period=user.get_next_period_day().strftime("%Y-%m-%d"),
-                                   safe_days=user.get_safe_and_unsafe_days(),)
+                                   safe_days=user.get_safe_and_unsafe_days(), )
 
         except Exception as e:
             print(traceback.format_exc())
