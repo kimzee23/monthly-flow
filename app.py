@@ -1,3 +1,5 @@
+import traceback
+
 from flask import Flask, render_template, request
 from menstruration_app import UserAccount
 
@@ -21,9 +23,10 @@ def index():
                                    cycle_length=user.cycle_length,
                                    period_length=user.period_length,
                                    next_period=user.get_next_period_day().strftime("%Y-%m-%d"),
-                                   safe_days=user.get_safe_and_unsafe_days(),
-                                   tools=user.show_safe_sex_tools.__doc__)
+                                   safe_days=user.get_safe_and_unsafe_days(),)
+
         except Exception as e:
+            print(traceback.format_exc())
             return f"Error: {e}"
     return render_template("index_one.html")
 @app.route('/pregnancy-support')
