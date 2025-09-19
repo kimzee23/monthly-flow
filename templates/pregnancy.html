@@ -12,12 +12,13 @@
   <nav class="navbar">
     <div class="logo">
       <i class="fas fa-calendar-check"></i>
-      <span>CycleSync</span>
+     <a href = "{{ url_for('index') }}"> <span>CycleSync</span></a>
     </div>
     <ul>
       <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
       <li><a href="{{ url_for('pregnancy_support') }}" class="active"><i class="fas fa-heart"></i> Pregnancy Support</a></li>
-      <li><a href="#"><i class="fas fa-tint"></i> Blood Group Info</a></li>
+      <li><a href="{{ url_for('blood_group') }}"><i class="fas fa-tint"></i> Blood Group Info</a></li>
+
       <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
     </ul>
   </nav>

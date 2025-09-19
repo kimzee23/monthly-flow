@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Period Tracker Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styleTwo.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styleTwo.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
 
 <body>
     <!-- Navbar -->
@@ -14,15 +17,14 @@
             <span>CycleSync</span>
         </div>
         <ul>
-            <li><a href="#"><i class="fas fa-heart"></i> Pregnancy Support</a></li>
-            <li><a href="#"><i class="fas fa-tint"></i> Blood Group Info</a></li>
+             <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+           <li><a href="{{ url_for('pregnancy_support') }}" class="active"><i class="fas fa-heart"></i> Pregnancy Support</a></li>
+          <li><a href="{{ url_for('blood_group') }}"><i class="fas fa-tint"></i> Blood Group Info</a></li>
             <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
         </ul>
-<button class="home-btn" onclick="window.location.href='{{ url_for("index") }}'">
-
-            <i class="fas fa-home"></i> Home
-        </button>
-    </nav>
+<button class="home-btn" onclick="window.location.href='{{ url_for('index') }}'">
+    <i class="fas fa-home"></i> Home
+</button>
 
     <div class="container">
         <div class="result-container">

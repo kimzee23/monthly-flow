@@ -13,10 +13,16 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
 .navbar .logo {
   color: #fff;
   font-size: 22px;
   font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
 }
 .navbar ul {
   list-style: none;

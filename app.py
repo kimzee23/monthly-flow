@@ -17,6 +17,9 @@ def index():
             )
             return render_template("result.html",
                                    name=user.name,
+                                   age=user.age,
+                                   cycle_length=user.cycle_length,
+                                   period_length=user.period_length,
                                    next_period=user.get_next_period_day().strftime("%Y-%m-%d"),
                                    safe_days=user.get_safe_and_unsafe_days(),
                                    tools=user.show_safe_sex_tools.__doc__)
